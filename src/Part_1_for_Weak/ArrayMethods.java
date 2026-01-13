@@ -14,6 +14,7 @@ public class ArrayMethods {
         System.out.println(Arrays.toString(arr));
         // Output: [5, 2, 8, 1, 3]
 
+
         // 2️⃣ Arrays.sort() → Sorts the entire array in ascending order
         Arrays.sort(arr);
         System.out.println(Arrays.toString(arr));
