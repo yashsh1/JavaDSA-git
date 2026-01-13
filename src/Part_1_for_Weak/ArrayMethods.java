@@ -10,7 +10,7 @@ public class ArrayMethods {
         int[] arr3 = {1, 2, 3, 4, 5};
         int[] arr4 = new int[5];  // creates an array of size 5
         int[] arr5 = new int[]{1, 2, 3, 4, 5};
-//         1️⃣ Arrays.toString() → Converts array into a readable String form
+//      1️⃣ Arrays.toString() → Converts array into a readable String form
         System.out.println(Arrays.toString(arr));
         // Output: [5, 2, 8, 1, 3]
 
