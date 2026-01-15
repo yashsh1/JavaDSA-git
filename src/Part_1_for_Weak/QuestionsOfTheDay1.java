@@ -40,8 +40,7 @@ public class QuestionsOfTheDay1 {
             if (nums1[i] == 1) {
                 streak++;
                 count = Math.max(streak, count);
-            } else {
-                streak = 0;
+            } else {streak = 0;
             }
         }
         return count;
