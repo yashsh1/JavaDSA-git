@@ -128,7 +128,7 @@ public class QuestionsOfTheDay1 {
         int[] nums = {3, 0, 1};
         int[] nums1 = {1, 1, 0, 1, 1, 1};
         int[] nums2 = {12, 345, 2, 6, 7896};
-        int[] nums3= {3,2,2,3};
+        int[]  nums3= {3,2,2,3};
         int val=3;
         System.out.println(missingNumber(nums)); // Output: 2
         System.out.println(QuestionsOfTheDay1.findMaxConsecutiveOnes(nums1)); // Output: 3
