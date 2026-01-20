@@ -124,7 +124,6 @@ public class QuestionsOfTheDay1 {
 
     // MAIN METHOD (for testing only)
     public static void main(String[] args) {
-        
         int[] nums = {3, 0, 1};
         int[] nums1 = {1, 1, 0, 1, 1, 1};
         int[] nums2 = {12, 345, 2, 6, 7896};
