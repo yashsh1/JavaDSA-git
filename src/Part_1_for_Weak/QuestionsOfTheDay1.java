@@ -121,7 +121,7 @@ public class QuestionsOfTheDay1 {
         }
         return k;
     }
-
+    
     // MAIN METHOD (for testing only)
     public static void main(String[] args) {
         int[] nums = {3, 0, 1};
