@@ -22,7 +22,7 @@ public class QuestionsOfTheDay1 {
 
 
 
-    
+
     // ==================================================
     // LeetCode - (https://leetcode.com/explore/learn/card/fun-with-arrays/521/introduction/3238/)
     // Question 2: Given a binary array nums, return the maximum number of consecutive 1's in the array.
