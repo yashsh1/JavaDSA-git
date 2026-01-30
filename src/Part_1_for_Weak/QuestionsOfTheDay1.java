@@ -33,6 +33,8 @@ public class QuestionsOfTheDay1 {
      * Time Complexity: O(n)   (single pass through the array)
      * Space Complexity: O(1)  (only a few variables used)
      */
+
+    
     public static int findMaxConsecutiveOnes(int[] nums1) {
         int count = 0;
         int streak = 0;
