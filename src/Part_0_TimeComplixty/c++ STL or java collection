@@ -84,7 +84,6 @@ Build-in function for the vector container :-
         v.insert(v.begin() + 1, 15);
         // v = {10, 15, 20, 30}
 
-
         // erase(pos) → Removes element at given position        //O(n)
         // Return type: iterator (points to next element after erased one)
         v.erase(v.begin() + 2);
