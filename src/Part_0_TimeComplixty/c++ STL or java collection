@@ -89,7 +89,6 @@ Build-in function for the vector container :-
         v.erase(v.begin() + 2);
         // v = {10, 15, 30}
 
-
         // clear() → Removes all elements
         // Return type: void
         v.clear();
