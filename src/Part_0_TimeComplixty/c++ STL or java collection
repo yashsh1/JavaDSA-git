@@ -68,7 +68,6 @@ Build-in function for the vector container :-
 
     int main() {
         vector<int> v = {10, 20, 30};
-
         // push_back(value) → Adds element at end
         // Return type: void (does not return anything)
         v.push_back(40);
