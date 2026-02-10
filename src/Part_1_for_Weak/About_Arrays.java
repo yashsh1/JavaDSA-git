@@ -21,8 +21,6 @@ public class About_Arrays {
         return this.name + ", directed by " + this.director + ", released in " + this.releaseYear;
     }
 
-    
-
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
         // The actual code for creating an Array to hold About_Arrays's.
