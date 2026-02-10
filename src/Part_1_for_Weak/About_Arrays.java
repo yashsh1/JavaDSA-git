@@ -20,6 +20,7 @@ public class About_Arrays {
     public String toString() {
         return this.name + ", directed by " + this.director + ", released in " + this.releaseYear;
     }
+    
 
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
