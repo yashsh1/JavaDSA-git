@@ -39,8 +39,6 @@ public class About_Arrays {
 //            dvdCollection[i]=new About_Arrays(name,year,director);
 //        }
 //                                or
-
-        
 //        dvdCollection[0] = new About_Arrays("The Shawshank Redemption", 1994, "Frank Darabont");
 //        dvdCollection[1] = new About_Arrays("The Dark Knight", 2008, "Christopher Nolan");
 //        dvdCollection[2] = new About_Arrays("Inception", 2010, "Christopher Nolan");
