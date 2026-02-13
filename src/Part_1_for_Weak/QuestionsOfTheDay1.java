@@ -1,5 +1,7 @@
 package Part_1_for_Weak;
 
+import java.util.Arrays;
+
 /**
  * =========================================================
  * Part_1_for_Weak
@@ -124,6 +126,36 @@ public class QuestionsOfTheDay1 {
         return k;
     }
 
+/*
+ARRAY Quest 1
+
+* You are given an integer array nums of length n.
+Construct an array ans of length 2n such that:
+- ans[i] = nums[i] for 0 <= i < n
+- ans[i + n] = nums[i] for 0 <= i < n
+
+In other words, ans is the concatenation of two nums arrays.
+Return the array ans.
+
+Example 1:
+Input: nums = [1,2,1]
+Output: [1,2,1,1,2,1]
+Example 2:
+Input: nums = [1,3,2,1]
+Output: [1,3,2,1,1,3,2,1]
+*/
+    public static int[] getConcatenation(int[] nums) {
+        int n = nums.length;
+        int[] ans = new int[2 * n];
+
+        // Copy nums into ans twice
+        for (int i = 0; i < n; i++) {
+            ans[i] = nums[i];       // first half
+            ans[i + n] = nums[i];   // second half
+        }
+
+        return ans;
+    }
 
 
     // MAIN METHOD (for testing only)
@@ -137,5 +169,6 @@ public class QuestionsOfTheDay1 {
         System.out.println(QuestionsOfTheDay1.findMaxConsecutiveOnes(nums1)); // Output: 3
         System.out.println(QuestionsOfTheDay1.findNumbers(nums2)); // Output: 2
         System.out.println(QuestionsOfTheDay1.removeElement(nums3,val)); // Output: 2
+        System.out.println(Arrays.toString(getConcatenation(nums)));
     }
 }
