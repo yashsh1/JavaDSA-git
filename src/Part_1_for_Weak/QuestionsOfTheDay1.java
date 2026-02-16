@@ -126,6 +126,7 @@ public class QuestionsOfTheDay1 {
         return k;
     }
 
+
 /*
 ARRAY Quest 1
 
