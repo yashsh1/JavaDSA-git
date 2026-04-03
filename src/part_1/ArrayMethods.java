@@ -1,5 +1,5 @@
 /// @author ${Yash sharma }
-package Part_1_for_Weak;
+package part_1;
 import java.util.Arrays;
 
 public class ArrayMethods {
