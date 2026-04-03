@@ -1,4 +1,4 @@
-package Part_1_for_Weak;
+package part_1;
 
 // if you want the full details about array you can read in notes and visite the link below for easy explaination
 //https://leetcode.com/explore/learn/card/fun-with-arrays/521/introduction/3221/
