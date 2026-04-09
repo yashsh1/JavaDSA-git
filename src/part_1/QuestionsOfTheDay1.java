@@ -108,7 +108,7 @@ public class QuestionsOfTheDay1 {
     }
 
 //    question 3 leetcode 27:-
-     /*
+    /*
      Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The order of the elements may be changed. Then return the number of elements in nums which are not equal to val.
       Consider the number of elements in nums which are not equal to val be k, to get accepted, you need to do the following things:
         Change the array nums such that the first k elements of nums contain the elements which are not equal to val. The remaining elements of nums are not important as well as the size of nums.
@@ -127,24 +127,24 @@ public class QuestionsOfTheDay1 {
     }
 
 
-/*
-ARRAY Quest 1
+    /*
+    ARRAY Quest 1
 
-* You are given an integer array nums of length n.
-Construct an array ans of length 2n such that:
-- ans[i] = nums[i] for 0 <= i < n
-- ans[i + n] = nums[i] for 0 <= i < n
+    * You are given an integer array nums of length n.
+    Construct an array ans of length 2n such that:
+    - ans[i] = nums[i] for 0 <= i < n
+    - ans[i + n] = nums[i] for 0 <= i < n
 
-In other words, ans is the concatenation of two nums arrays.
-Return the array ans.
+    In other words, ans is the concatenation of two nums arrays.
+    Return the array ans.
 
-Example 1:
-Input: nums = [1,2,1]
-Output: [1,2,1,1,2,1]
-Example 2:
-Input: nums = [1,3,2,1]
-Output: [1,3,2,1,1,3,2,1]
-*/
+    Example 1:
+    Input: nums = [1,2,1]
+    Output: [1,2,1,1,2,1]
+    Example 2:
+    Input: nums = [1,3,2,1]
+    Output: [1,3,2,1,1,3,2,1]
+    */
     public static int[] getConcatenation(int[] nums) {
         int n = nums.length;
         int[] ans = new int[2 * n];
@@ -185,9 +185,6 @@ Output: [1,3,2,1,1,3,2,1]
             }
         }
         return result;
-
-
-
 //        or
 //        int arr[] = new int[n*2];
 //        for(int i = 0; i<n; i++){
@@ -196,6 +193,27 @@ Output: [1,3,2,1,1,3,2,1]
 //        }
 //        return arr;
     }
+
+    
+    public static int[] sortedSquares(int[] nums) {
+        int low =0;
+        int high = nums.length-1;
+        int[] result = new int[high+1];
+        int pos = nums.length-1;
+        while(low<=high){
+            if(Math.abs(nums[low])<=Math.abs(nums[high])){
+                result[pos] = nums[high]*nums[high];
+                high--;
+            }
+            else{
+                result[pos]=nums[low]*nums[low];
+                low++;
+            }
+            pos--;
+        }
+        return result;
+    }
+    
 
 
     // MAIN METHOD (for testing only)
@@ -206,11 +224,13 @@ Output: [1,3,2,1,1,3,2,1]
         int[] nums3= {3,2,2,3};
         int[] nums4= {2,5,1,3,4,7};
         int val=3;
+        int[] nums5={-4,-3,0,3,10};
         System.out.println(missingNumber(nums)); // Output: 2
         System.out.println(QuestionsOfTheDay1.findMaxConsecutiveOnes(nums1)); // Output: 3
         System.out.println(QuestionsOfTheDay1.findNumbers(nums2)); // Output: 2
         System.out.println(QuestionsOfTheDay1.removeElement(nums3,val)); // Output: 2
         System.out.println(Arrays.toString(getConcatenation(nums)));
         System.out.println(Arrays.toString(shuffle(nums4,val)));
+        System.out.println(Arrays.toString(sortedSquares(nums5)));
     }
 }
