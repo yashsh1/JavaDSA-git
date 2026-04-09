@@ -196,7 +196,26 @@ public class QuestionsOfTheDay1 {
 //        return arr;
     }
 
-    
+    /*
+Question
+    Squares of a Sorted Array
+hints:- Easy Array Two Pointers
+Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order.
+Examples
+    Input: nums = [-4, -1, 0, 3, 10]
+    Output: [0, 1, 9, 16, 100]
+    Input: nums = [-7, -3, 2, 3, 11]
+    Output: [4, 9, 9, 49, 121]
+    Constraints
+        1 ≤ nums.length ≤ 10⁴
+        -10⁴ ≤ nums[i] ≤ 10⁴
+    nums is sorted in non-decreasing order
+    Hint →
+        Negative numbers become large after squaring. Use two pointers from both ends and fill a result array from right to left.
+    Goal →
+        O(n) time · O(n) space
+    My approach / notes
+    * */
     public static int[] sortedSquares(int[] nums) {
         int low =0;
         int high = nums.length-1;
@@ -215,8 +234,131 @@ public class QuestionsOfTheDay1 {
         }
         return result;
     }
-    
 
+
+    /*
+    * Duplicate Zeros
+Easy Array Two Pointers
+Given a fixed-length integer array arr, duplicate each occurrence of zero, shifting the remaining elements to the right. Elements beyond the length of the original array are not written. Modify the array in place and do not return anything.
+Examples
+    Input: arr = [1, 0, 2, 3, 0, 4, 5, 0]
+    Output: [1, 0, 0, 2, 3, 0, 0, 4]
+    Input: arr = [1, 2, 3]
+    Output: [1, 2, 3]
+    Constraints
+        1 ≤ arr.length ≤ 10⁴
+        0 ≤ arr[i] ≤ 9
+    Hint →
+        Pass 1: count zeros to find where the last valid element lands. Pass 2: fill from right to left using two pointers.
+    Goal →
+        O(n) time · O(1) space
+    My approach / notes */
+
+
+//     public void duplicateZeros(int[] arr) {
+//         int[] arr2 = new int[arr.length];
+//         int j = 0;
+//         for(int i = 0; i < arr.length && j < arr.length; i++){
+//             if(arr[i] == 0){
+//                 arr2[j] = 0;
+//                 j++;
+//                 if(j < arr.length){  // ✅ bounds check
+//                     arr2[j] = 0;
+//                     j++;
+//                 }
+//             }
+//             else{
+//                 arr2[j] = arr[i];
+//                 j++;
+//             }
+//         }
+//         for(int i = 0; i < arr.length; i++){
+//             arr[i] = arr2[i];  // ✅ copy back to original
+//         }
+//     }
+//
+public static int[] duplicateZeros(int[] arr) {
+    int n = arr.length;
+    int zeros = 0;
+
+    // Pass 1 — count zeros
+    for(int i = 0; i < n; i++){
+        if(arr[i] == 0) zeros++;
+    }
+
+    // Pass 2 — fill from right to left
+    int i = n - 1;           // pointer for original array
+    int j = n + zeros - 1;   // pointer for expanded array
+
+    while(i >= 0){
+        if(arr[i] == 0){
+            if(j < n) arr[j] = 0;  // duplicate zero
+            j--;
+            if(j < n) arr[j] = 0;  // original zero
+            j--;
+        }
+        else{
+            if(j < n) arr[j] = arr[i];
+            j--;
+        }
+        i--;
+    }
+    return arr;
+}
+
+/*
+* Question 3
+Merge Sorted Array
+Easy
+Array
+Two Pointers
+You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, representing the number of elements in nums1 and nums2 respectively.
+
+Merge nums1 and nums2 into a single sorted array stored inside nums1. nums1 has length m + n where the last n elements are 0 and should be ignored.
+Examples
+Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
+Output: [1,2,2,3,5,6]
+Input: nums1 = [1], m = 1, nums2 = [], n = 0
+Output: [1]
+Input: nums1 = [0], m = 0, nums2 = [1], n = 1
+Output: [1]
+Constraints
+nums1.length == m + n  ·  nums2.length == n
+0 ≤ m, n ≤ 200  ·  1 ≤ m + n ≤ 200
+-10⁹ ≤ nums1[i], nums2[j] ≤ 10⁹
+Brute →
+Use an extra array with three pointers i, j, k. Compare and fill, then copy back. O(m+n) space.
+Optimal →
+Fill from the right! Use pointers at end of nums1 and nums2, place the larger element at the back. O(1) space.
+Goal →
+O(m+n) time · O(1) space
+My approach / notes
+*/
+public static int[] merge(int[] nums1, int m, int[] nums2, int n) {
+    int i = m - 1;         // last real element of nums1
+    int j = n - 1;         // last element of nums2
+    int k = m + n - 1;     // last position of nums1
+
+    while(i >= 0 && j >= 0){
+        if(nums1[i] >= nums2[j]){
+            nums1[k] = nums1[i];
+            i--;
+        } else {
+            nums1[k] = nums2[j];
+            j--;
+        }
+        k--;
+    }
+
+    // if nums2 still has remaining elements
+    while(j >= 0){
+        nums1[k] = nums2[j];
+        j--; k--;
+    }
+    return nums1;
+    // no need to handle remaining nums1
+    // they are already in place!
+}
 
     // MAIN METHOD (for testing only)
     public static void main(String[] args) {
@@ -227,12 +369,17 @@ public class QuestionsOfTheDay1 {
         int[] nums4= {2,5,1,3,4,7};
         int val=3;
         int[] nums5={-4,-3,0,3,10};
+        int [] nums6  = {1,2,3,0,0,0};  int m = 3;
+        int [] nums7 = {2,5,6};        int  n = 3;
         System.out.println(missingNumber(nums)); // Output: 2
         System.out.println(QuestionsOfTheDay1.findMaxConsecutiveOnes(nums1)); // Output: 3
         System.out.println(QuestionsOfTheDay1.findNumbers(nums2)); // Output: 2
         System.out.println(QuestionsOfTheDay1.removeElement(nums3,val)); // Output: 2
-        System.out.println(Arrays.toString(getConcatenation(nums)));
-        System.out.println(Arrays.toString(shuffle(nums4,val)));
-        System.out.println(Arrays.toString(sortedSquares(nums5)));
+        System.out.println(Arrays.toString(getConcatenation(nums)));//[3, 0, 1, 3, 0, 1]
+        System.out.println(Arrays.toString(shuffle(nums4,val)));//[2, 3, 5, 4, 1, 7]
+        System.out.println(Arrays.toString(sortedSquares(nums5)));//[0, 9, 9, 16, 100]
+        System.out.println(Arrays.toString( duplicateZeros(new int[]{1 , 0 , 2 , 3 , 0 , 4 , 5 , 0})));//[1, 0, 0, 2, 3, 0, 0, 4]
+        System.out.println(Arrays.toString(merge(nums6,m,nums7,n)));
+
     }
 }
