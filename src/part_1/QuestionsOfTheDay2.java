@@ -1,8 +1,9 @@
 package part_1;
 
+import java.util.Arrays;
 import java.util.HashSet;
 
-public class QuestionsOfTheDay2 {
+public  class QuestionsOfTheDay2 {
     // ============================================
 // Question 1— Remove Element
 // Difficulty : Easy
@@ -48,7 +49,7 @@ public class QuestionsOfTheDay2 {
 
     // YOUR CODE BELOW
 // ---------------
-    public static int removeElement(int[] nums , int val) {ū
+    public static int removeElement(int[] nums , int val) {
         int k = 0;  // slow pointer — next position to place valid element
 
         for(int i = 0; i < nums.length; i++){
@@ -133,11 +134,185 @@ public  boolean checkIfExist(int[] arr) {
 // Space : O(n)
 
 
+
+    // ============================================
+// Question 6 — Valid Mountain Array
+// Difficulty : Easy
+// Topics     : Array, Two Pointers
+// ============================================
+
+// PROBLEM
+// -------
+// Given an array of integers arr, return true
+// if and only if it is a valid mountain array.
+//
+// A mountain array must satisfy:
+//   - arr.length >= 3
+//   - Strictly increases to a peak element arr[i]
+//   - Strictly decreases after the peak
+//   - Peak cannot be first or last element
+//   - 0 < i < arr.length - 1
+
+// EXAMPLES
+// --------
+// Input : arr = [2,1]
+// Output: false
+// Reason: length < 3, no peak possible
+//
+// Input : arr = [3,5,5]
+// Output: false
+// Reason: not strictly increasing (5,5)
+//
+// Input : arr = [0,3,2,1]
+// Output: true
+// Reason: strictly up to 3, strictly down after
+
+// CONSTRAINTS
+// -----------
+// 1  <= arr.length <= 10^4
+// 0  <= arr[i]    <= 10^4
+
+// EDGE CASES TO THINK ABOUT
+// -------------------------
+// arr = [1,2,3]     → only goes up, no descent  → false
+// arr = [3,2,1]     → only goes down, no ascent → false
+// arr = [1,3,2,3,1] → two peaks                 → false
+// arr = [0,1,2,1,0] → valid mountain            → true
+
+// HINT
+// ----
+// Brute  : find peak index, verify left side strictly
+//          increasing and right side strictly decreasing
+//          peak must not be index 0 or last index
+//
+// Optimal: two pointers left and right
+//          walk left up from start
+//          walk right up from end
+//          if left==right and neither is at boundary → true
+
+// YOUR COMPLEXITY
+// ---------------
+// Brute
+// Time  : O(n)
+// Space : O(1)
+
+// OPTIMAL COMPLEXITY
+// ------------------
+// Time  : O(n)
+// Space : O(1)
+
+    // YOUR CODE BELOW
+// ---------------
+    public boolean validMountainArray(int[] arr) {
+        /*
+        * int n = arr.length;
+
+        // length check
+        if(n < 3) return false;
+
+        // find peak
+        int peak = 0;
+        for(int i = 0; i < n; i++){
+            if(arr[i] > arr[peak]) peak = i;
+        }
+
+        // peak cannot be first or last
+        if(peak == 0 || peak == n - 1) return false;
+
+        // check strictly increasing left side
+        for(int i = 0; i < peak; i++){
+            if(arr[i] >= arr[i + 1]) return false;
+        }
+
+        // check strictly decreasing right side
+        for(int i = peak; i < n - 1; i++){
+            if(arr[i] <= arr[i + 1]) return false;
+        }
+
+        return true;*/
+        int n = arr.length;
+        int left = 0;
+        int right = n - 1;
+        while(left < n - 1 && arr[left] < arr[left + 1]){
+            left++;
+        }
+        while(right > 0 && arr[right] < arr[right - 1]){
+            right--;
+        }
+        return left == right && left != 0 && right != n - 1;
+    }
+
+
+// ============================================
+// Question 7 — Replace Elements with Greatest
+//              Element on Right Side
+// Difficulty : Easy
+// Topics     : Array
+// ============================================
+
+// PROBLEM
+// -------
+// Given an array arr, replace every element with
+// the greatest element to its right.
+// Replace the last element with -1.
+// Return the modified array.
+
+// EXAMPLES
+// --------
+// Input : arr = [17,18,5,4,6,1]
+// Output: [18,6,6,6,1,-1]
+//
+// Input : arr = [400]
+// Output: [-1]
+
+// CONSTRAINTS
+// -----------
+// 1 <= arr.length <= 10^4
+// 1 <= arr[i]    <= 10^5
+
+// HINT
+// ----
+// Brute  : for each index scan all elements to
+//          its right to find max → O(n²)
+//
+// Optimal: traverse right to left, keep a running
+//          maxRight variable, replace as you go → O(n)
+
+// YOUR COMPLEXITY
+// ---------------
+// Time  : O(n²)
+// Space : O(1)
+
+// OPTIMAL COMPLEXITY
+// ------------------
+// Time  : O(n)
+// Space : O(1)
+
+// YOUR CODE BELOW
+// ---------------
+
+public static int[] replaceElements(int[] arr) {
+    int n = arr.length;
+    int maxRight = -1;
+
+    for(int i = n - 1; i >= 0; i--){
+        int newMax = Math.max(maxRight, arr[i]);
+        arr[i] = maxRight;
+        maxRight = newMax;
+    }
+    return arr;
+}
+
+
     public static void main(String [] args){
         QuestionsOfTheDay2 question = new QuestionsOfTheDay2();
+        int [] arr = {0,3,2,1};
         int [] nums= {0,1,2,2,3,0,4,2};
 
-        System.out.println(removeElement(nums,2));
+        System.out.println(question.removeElement(nums,2));
         System.out.println(question.checkIfExist(nums));//ture
+        System.out.println(question.validMountainArray(arr));
+        System.out.println(Arrays.toString(question.replaceElements(arr)));
     }
+
 }
