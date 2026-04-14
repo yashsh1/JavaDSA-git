@@ -303,16 +303,85 @@ public static int[] replaceElements(int[] arr) {
     return arr;
 }
 
+// ============================================
+// Question 7 — Sort Array By Parity
+// Difficulty : Easy
+// Topics     : Array, Two Pointers
+// ============================================
 
-    public static void main(String [] args){
+// PROBLEM
+// -------
+// Given an integer array nums, move all even
+// integers to the beginning of the array followed
+// by all odd integers.
+// Return any array that satisfies this condition.
+
+// EXAMPLES
+// --------
+// Input : nums = [3,1,2,4]
+// Output: [2,4,3,1]
+// Note  : [4,2,3,1], [2,4,1,3] also accepted
+//
+// Input : nums = [0]
+// Output: [0]
+
+// CONSTRAINTS
+// -----------
+// 1 <= nums.length <= 5000
+// 0 <= nums[i]    <= 5000
+
+// EDGE CASES TO THINK ABOUT
+// -------------------------
+// nums = [0]        → 0 is even         → [0]
+// nums = [1,3,5]    → all odd           → [1,3,5]
+// nums = [2,4,6]    → all even          → [2,4,6]
+// nums = [1,2]      → one odd, one even → [2,1]
+
+// HINT
+// ----
+// Use a slow pointer j starting at 0
+// Loop through every element with pointer i
+// If nums[i] is even → swap nums[i] with nums[j]
+// and increment j
+// j always points to next position for even numbers
+
+// YOUR COMPLEXITY
+// ---------------
+// Time  : O(n)
+// Space : O(1)
+
+// OPTIMAL COMPLEXITY
+// ------------------
+// Time  : O(n)
+// Space : O(1)
+
+// YOUR CODE BELOW
+// ---------------
+
+    public int[] sortArrayByParity(int[] nums) {
+        // if(arr.length<1||arr==null)return nums;
+        int j =0;
+        for(int i =0;i<nums.length;i++){
+            if(nums[i]%2==0){
+                int temp=nums[j];
+                nums[j]=nums[i];
+                nums[i]=temp;
+                j++;
+            }
+        }
+        return nums;
+
+
+        public static void main(String [] args){
         QuestionsOfTheDay2 question = new QuestionsOfTheDay2();
         int [] arr = {0,3,2,1};
-        int [] nums= {0,1,2,2,3,0,4,2};
+        int[] nums = new int[]{0 , 1 , 2 , 2 , 3 , 0 , 4 , 2};
 
         System.out.println(question.removeElement(nums,2));
         System.out.println(question.checkIfExist(nums));//ture
         System.out.println(question.validMountainArray(arr));
         System.out.println(Arrays.toString(question.replaceElements(arr)));
+        System.out.println(Arrays.toString(sortArrayByParity(nums)));
     }
 
 }
